@@ -1,6 +1,11 @@
 pipeline{
     agent any
     stages{
+        stage('git-clone'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/festuge/secon-practoce-multi.git']]])
+            }
+        }
         stage('feature branch deploy code'){
             when{
                 branch 'feature'
