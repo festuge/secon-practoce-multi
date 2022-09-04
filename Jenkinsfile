@@ -1,12 +1,7 @@
 pipeline{
     agent any
     stages{
-        stage('git-clone'){
-            steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/festuge/secon-practoce-multi.git']]])
-            }
-        }
-        stage('feature branch deploy code'){
+        stage('feature-branch-deploy-code'){
             when{
                 branch 'feature'
             }
@@ -14,7 +9,7 @@ pipeline{
                 sh 'claudi.sh'
             }
         }
-        stage('main branch delpoy code'){
+        stage('main-branch-delpoy-code'){
             when{
                 branch 'main'
             }
@@ -23,7 +18,7 @@ pipeline{
                 sh ' cat /etc/passwd'
             }
         }
-        stage('develop branch deployment code'){
+        stage('develop-branch-deployment-code'){
             when{
                 branch 'develop'
             }
@@ -31,7 +26,7 @@ pipeline{
                 sh 'cat claudi.sh'
             }
         }
-        stage('parallel level'){
+        stage('parallel-level'){
             paralle{
                 stage('sub-job0'){
                     steps{
@@ -42,7 +37,7 @@ pipeline{
         }
         stage('simple-cpu-check'){
             steps{
-                sh 'lscpu'
+                sh 'lsblk'
             }
         }
     }
