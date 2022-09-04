@@ -6,7 +6,7 @@ pipeline{
                 branch 'feature'
             }
             steps{
-                sh 'claudi.sh'
+                sh 'bash -x claudi.sh'
             }
         }
         stage('main-branch-delpoy-code'){
@@ -23,7 +23,7 @@ pipeline{
                 branch 'develop'
             }
             steps{
-                sh 'cat claudi.sh'
+                sh 'cat /etc/passwd'
             }
         }
         stage('parallel-level'){
