@@ -1,5 +1,9 @@
 pipeline{
-    agent any
+    agent {
+        label{
+            label 'wakanda'
+        }
+    }
     stages{
         stage('feature-branch-deploy-code'){
             when{
@@ -30,12 +34,17 @@ pipeline{
             parallel{
                 stage('sub-job0'){
                     steps{
-                        echo "sub job 0"
+                        echo "sub-job-0"
                     }
                 }
             }
         }
         stage('simple-cpu-check'){
+            agent{
+                label{
+                    label 'blackpanther'
+                }
+            }
             steps{
                 sh 'lsblk'
             }
