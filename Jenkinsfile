@@ -5,7 +5,7 @@ pipeline{
         }
     }
     stages{
-        stage('main-branch-deploy-code'){
+        stage('main-branch-deploy'){
             when{
                 branch 'main'
             }
